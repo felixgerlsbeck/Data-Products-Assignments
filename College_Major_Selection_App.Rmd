@@ -1,0 +1,45 @@
+---
+title: "An Interactive Application for Comparing College Majors"
+author: "Felix Gerlsbeck"
+date: "2/4/2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Who is this app for?
+
+- Students today face a difficult choice when deciding on their college major. Besides personal interest, the expected income and unemployment rate for their chosen field are important in determining their choice.
+
+- So far it has been difficult to get all the relevant data in one place.
+
+- A graphical representation to see at a glance where their chosen major falls compared to alternatives has so far been missing.
+
+## The College Major Selection App: Data and Method
+
+- This app uses recent data from Fivethirtyeight.com on the median income and the current unemployment rate for different college majors.
+
+- For 16 different categories of college major, it calculates the average unemployment rate and median income.
+
+- Students can easily choose a major category on the left of the app, and see at a glance where their choice falls within the other options they have.
+
+- The app also gives the exact numbers for the median income and unemployment rate for the chosen category.
+
+## Included College Major Categories
+The following categories can be selected in the app:
+```{r majors, echo = FALSE, message = FALSE, comment = ""}
+library(fivethirtyeight)
+library(dplyr)
+data(college_all_ages)
+names <- unique(college_all_ages$major_category)
+names
+```
+
+## Choice of College Major is Important
+The choice of college major is of great importance for students, as the range both of the unemployment rate and the median income is great, as the following figure shows.
+```{r pressure, echo = FALSE}
+plot(college_all_ages$median, college_all_ages$unemployment_rate, pch = 16, xlab="Median income of college major", ylab="Unemployment rate of college major")
+```
+
